@@ -130,7 +130,7 @@ $Project "Client (Episodic)"
 
 		$Folder	"SPARROW"
 		{
-			$File	"sparrow\fx_cs_weaponfx.h"
+			$File	"sparrow\fx_cs_weaponfx.cpp"
 		}
 	}
 	
