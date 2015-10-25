@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models\weapons\V_hand/citizen_sheet"
+	"$halflambert" 1
+}
