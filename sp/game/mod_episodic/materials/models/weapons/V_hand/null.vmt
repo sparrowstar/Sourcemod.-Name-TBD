@@ -1,0 +1,6 @@
+//This VMT file is a cheep hack for the DoD:S viewmodels, because they still have the handmesh in them, so
+//we just edited the weapon's meshes to ask for "null" instead of "v_axis_sleeve", "us_sleeve" and "v_hand"
+"VertexLitGeneric"
+{
+	"$no_draw" "1"
+}
