@@ -264,6 +264,7 @@ $Project "Server (Episodic)"
 			$File	"hl2\weapon_smg1.cpp"
 			$File	"episodic\weapon_striderbuster.cpp"
 			$File	"episodic\weapon_striderbuster.h"
+			$File	"episodic\weapon_oldmanharpoon.cpp"
 			$File	"hl2\weapon_stunstick.cpp"
 			$File	"hl2\weapon_stunstick.h"
 			$File	"episodic\ep1_gamestats.h"
@@ -302,6 +303,8 @@ $Project "Server (Episodic)"
 
 		$Folder	"SPARROW"
 		{
+			$File	"$SRCDIR\game\shared\sparrow\singleplayer_animstate.cpp"
+			$File	"$SRCDIR\game\shared\sparrow\singleplayer_animstate.h"
 		}
 	}
 }

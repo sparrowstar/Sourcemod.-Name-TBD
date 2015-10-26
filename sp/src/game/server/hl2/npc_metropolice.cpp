@@ -58,6 +58,11 @@
 
 #define	METROPOLICE_BODYGROUP_MANHACK	1
 
+static const char* modelnames[] = {
+	"models/police.mdl",
+	"models/police_fem.mdl",
+};
+
 enum
 {
 	// NOTE: Exact #s are important, since they are referred to by number in schedules below
@@ -572,18 +577,11 @@ bool CNPC_MetroPolice::OverrideMoveFacing( const AILocalMoveGoal_t &move, float 
 //-----------------------------------------------------------------------------
 void CNPC_MetroPolice::Precache( void )
 {
-	if ( HasSpawnFlags( SF_NPC_START_EFFICIENT ) )
-	{
-		SetModelName( AllocPooledString("models/police_cheaple.mdl" ) );
-	}
-	else
-	{
-		SetModelName( AllocPooledString("models/police.mdl") );
-	}
-
-	PrecacheModel( STRING( GetModelName() ) );
-
 	UTIL_PrecacheOther( "npc_manhack" );
+
+	PrecacheModel("models/police.mdl");
+	PrecacheModel("models/police_cheaple.mdl");
+	PrecacheModel("models/police_fem.mdl");
 
 	PrecacheScriptSound( "NPC_Metropolice.Shove" );
 	PrecacheScriptSound( "NPC_MetroPolice.WaterSpeech" );
@@ -621,7 +619,7 @@ void CNPC_MetroPolice::Spawn( void )
 	AddSpawnFlags( SF_NPC_FADE_CORPSE );
 #endif // _XBOX
 
-	SetModel( STRING( GetModelName() ) );
+	SetModel(modelnames[random->RandomInt(0, ARRAYSIZE(modelnames) - 1)]);
 
 	SetHullType(HULL_HUMAN);
 	SetHullSizeNormal();

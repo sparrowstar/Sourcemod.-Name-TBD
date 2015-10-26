@@ -131,6 +131,8 @@ $Project "Client (Episodic)"
 		$Folder	"SPARROW"
 		{
 			$File	"sparrow\fx_cs_weaponfx.cpp"
+			$File	"$SRCDIR\game\shared\sparrow\singleplayer_animstate.cpp"
+			$File	"$SRCDIR\game\shared\sparrow\singleplayer_animstate.h"
 		}
 	}
 	
