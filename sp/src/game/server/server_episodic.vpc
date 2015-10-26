@@ -299,5 +299,9 @@ $Project "Server (Episodic)"
 				$File	"hl2\weapon_flaregun.h"
 			}
 		}
+
+		$Folder	"SPARROW"
+		{
+		}
 	}
 }
