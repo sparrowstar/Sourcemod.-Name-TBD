@@ -4080,69 +4080,69 @@ void C_BaseAnimating::FireObsoleteEvent( const Vector& origin, const QAngle& ang
 	case CL_EVENT_NPC_MUZZLEFLASH1:
 	case CL_EVENT_NPC_MUZZLEFLASH2:
 	case CL_EVENT_NPC_MUZZLEFLASH3:
+	{
+		int iAttachment = -1;
+		bool bFirstPerson = true;
+
+		// First person muzzle flashes
+		switch (event)
 		{
-			int iAttachment = -1;
-			bool bFirstPerson = true;
+		case CL_EVENT_MUZZLEFLASH0:
+			iAttachment = 0;
+			break;
 
-			// First person muzzle flashes
-			switch (event) 
-			{
-			case CL_EVENT_MUZZLEFLASH0:
-				iAttachment = 0;
-				break;
+		case CL_EVENT_MUZZLEFLASH1:
+			iAttachment = 1;
+			break;
 
-			case CL_EVENT_MUZZLEFLASH1:
-				iAttachment = 1;
-				break;
+		case CL_EVENT_MUZZLEFLASH2:
+			iAttachment = 2;
+			break;
 
-			case CL_EVENT_MUZZLEFLASH2:
-				iAttachment = 2;
-				break;
+		case CL_EVENT_MUZZLEFLASH3:
+			iAttachment = 3;
+			break;
 
-			case CL_EVENT_MUZZLEFLASH3:
-				iAttachment = 3;
-				break;
+			// Third person muzzle flashes
+		case CL_EVENT_NPC_MUZZLEFLASH0:
+			iAttachment = 0;
+			bFirstPerson = false;
+			break;
 
-				// Third person muzzle flashes
-			case CL_EVENT_NPC_MUZZLEFLASH0:
-				iAttachment = 0;
-				bFirstPerson = false;
-				break;
+		case CL_EVENT_NPC_MUZZLEFLASH1:
+			iAttachment = 1;
+			bFirstPerson = false;
+			break;
 
-			case CL_EVENT_NPC_MUZZLEFLASH1:
-				iAttachment = 1;
-				bFirstPerson = false;
-				break;
+		case CL_EVENT_NPC_MUZZLEFLASH2:
+			iAttachment = 2;
+			bFirstPerson = false;
+			break;
 
-			case CL_EVENT_NPC_MUZZLEFLASH2:
-				iAttachment = 2;
-				bFirstPerson = false;
-				break;
+		case CL_EVENT_NPC_MUZZLEFLASH3:
+			iAttachment = 3;
+			bFirstPerson = false;
+			break;
+		}
 
-			case CL_EVENT_NPC_MUZZLEFLASH3:
-				iAttachment = 3;
-				bFirstPerson = false;
-				break;
-			}
-
-		if ( iAttachment != -1 && m_Attachments.Count() > iAttachment )
+		if (iAttachment != -1 && m_Attachments.Count() > iAttachment)
 		{
-			if ( input->CAM_IsThirdPerson() )
+			if (input->CAM_IsThirdPerson())
 			{
 				C_BaseCombatWeapon *pWeapon = GetActiveWeapon();
-				pWeapon->GetAttachment( iAttachment+1, attachOrigin, attachAngles );
+				pWeapon->GetAttachment(iAttachment + 1, attachOrigin, attachAngles);
 			}
 			else
 			{
 				C_BasePlayer *pPlayer = C_BasePlayer::GetLocalPlayer();
 				CBaseViewModel *vm = pPlayer->GetViewModel();
-				vm->GetAttachment( iAttachment+1, attachOrigin, attachAngles );
-				engine->GetViewAngles( attachAngles );
+				vm->GetAttachment(iAttachment + 1, attachOrigin, attachAngles);
+				engine->GetViewAngles(attachAngles);
 			}
-			g_pEffects->MuzzleFlash( attachOrigin, attachAngles, 1.0, MUZZLEFLASH_TYPE_DEFAULT );
+			g_pEffects->MuzzleFlash(attachOrigin, attachAngles, 1.0, MUZZLEFLASH_TYPE_DEFAULT);
 		}
 		break;
-
+	}
 	// Obsolete: Use the AE_CL_CREATE_PARTICLE_EFFECT event instead, which uses the artist driven particle system & editor.
 	case CL_EVENT_SPARK0:
 		{
